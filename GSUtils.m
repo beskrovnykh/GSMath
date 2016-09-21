@@ -43,18 +43,18 @@ plot[funs__, params___] :=
       AxesLabel -> {"time", "x", ""}, params]
 ];
 
-plotAtX[funs__, legend___, xVal_] :=
+plotAtX[funs__, legend___, xVal_, params___] :=
     Module[{T, X}, {T, X} = maxBounds[First[funs]];
     Plot[Evaluate[funs /. Symbol["x"] -> xVal /. Symbol["t"] -> t], {t, 0, T},
       PlotLegends -> Placed[legend, Above],
-      AxesLabel -> {"time"}]
+      AxesLabel -> {"time"}, params]
     ];
 
-plotAtT[funs__, legend___, tVal_] :=
+plotAtT[funs__, legend___, tVal_, params___] :=
     Module[{T, X}, {T, X} = maxBounds[First[funs]];
     Plot[Evaluate[funs /. Symbol["x"] -> x /. Symbol["t"] -> tVal], {x, 0, X},
       PlotLegends -> Placed[legend, Above],
-      AxesLabel -> {"x"}]
+      AxesLabel -> {"x"}, params]
     ];
 
 End[];
